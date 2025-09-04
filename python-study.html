@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn Python - Coding Course</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f8fa; margin:0;padding:0;}
+    header { text-align:center; background:#00b894; color:#fff; padding:36px 0 12px 0; border-bottom-left-radius:30px; border-bottom-right-radius:30px;}
+    .container { max-width:900px; margin:0 auto 40px auto; background:#fff; border-radius:18px; box-shadow:0 2px 12px #e2e2e2; padding:32px 18px;}
+    h1, h2 { color:#00b894;}
+    .code-block { background:#23272f; color:#f5f5f5; font-family:'Consolas',monospace; border-radius:8px; padding:15px 13px; margin:16px 0; font-size:15px;}
+    .note { background:#d0ffe6; border-left:5px solid #00b894; padding:13px 18px; border-radius:7px; margin:17px 0;}
+    .project { background:#fffbe4; border-left:5px solid #ffb700; padding:14px 18px; border-radius:7px; margin:18px 0;}
+    .question { background:#eaf2ff; border-left:5px solid #6c63ff; padding:14px 18px; border-radius:7px; margin:18px 0;}
+    a, a:visited {color:#00b894;}
+    .back { display:inline-block; margin-top:18px; background:#00b894; color:#fff; padding:8px 18px; border-radius:6px; text-decoration:none;}
+    .back:hover {background:#006b52;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Python Study Guide</h1>
+    <div>Learn programming for everything: data, web, automation, more!</div>
+  </header>
+  <div class="container">
+    <a href="index.html" class="back">&larr; Back to Home</a>
+    <h2>What is Python?</h2>
+    <div class="note">
+      <b>Python</b> is a popular, easy programming language for scripts, games, data, web, AI, etc.
+    </div>
+    <h2>Basic Python Example</h2>
+    <div class="code-block">
+print("Hello, Python world!")
+    </div>
+    <h2>Variables and Math</h2>
+    <div class="code-block">
+a = 10
+b = 5
+print("Sum:", a + b)
+print("Product:", a * b)
+    </div>
+    <h2>If-Else (Conditions)</h2>
+    <div class="code-block">
+score = 56
+if score >= 50:
+    print("Pass")
+else:
+    print("Fail")
+    </div>
+    <h2>Loops</h2>
+    <div class="code-block">
+for i in range(1, 6):
+    print(i)
+    </div>
+    <h2>Functions</h2>
+    <div class="code-block">
+def greet(name):
+    print("Hello,", name)
+
+greet("webTune1")
+    </div>
+    <h2>Mini Project: Simple Calculator</h2>
+    <div class="project">
+      <div class="code-block">
+num1 = 7
+num2 = 3
+
+print("Sum:", num1 + num2)
+print("Difference:", num1 - num2)
+print("Product:", num1 * num2)
+print("Quotient:", num1 / num2)
+      </div>
+      <b>Try:</b> Change numbers and see the result.
+    </div>
+    <h2>Practice Questions</h2>
+    <div class="question">
+      <ul>
+        <li>Write a program to print your name and your favorite food.</li>
+        <li>Print the numbers from 10 to 1 in reverse using a loop.</li>
+      </ul>
+    </div>
+    <h2>How to run Python:</h2>
+    <div class="note">
+      <ul>
+        <li>Install Python: <a href="https://www.python.org/" target="_blank">python.org</a></li>
+        <li>Write code in Notepad/VS Code. Save as <b>test.py</b></li>
+        <li>Open Command Prompt, type: <code>python test.py</code></li>
+      </ul>
+    </div>
+    <a href="index.html" class="back">&larr; Back to Home</a>
+  </div>
+</body>
+</html>
