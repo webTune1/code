@@ -2,87 +2,569 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Learn CSS - Coding Course</title>
+  <title>CSS A-Z Study Guide (Beginner Friendly)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- Google Fonts for modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; background: #f6f8fa; margin:0;padding:0;}
-    header { text-align:center; background:#0984e3; color:#fff; padding:36px 0 12px 0; border-bottom-left-radius:30px; border-bottom-right-radius:30px;}
-    .container { max-width:900px; margin:0 auto 40px auto; background:#fff; border-radius:18px; box-shadow:0 2px 12px #e2e2e2; padding:32px 18px;}
-    h1, h2 { color:#0984e3;}
-    .code-block { background:#23272f; color:#f5f5f5; font-family:'Consolas',monospace; border-radius:8px; padding:15px 13px; margin:16px 0; font-size:15px;}
-    .note { background:#c7ecee; border-left:5px solid #0984e3; padding:13px 18px; border-radius:7px; margin:17px 0;}
-    .project { background:#fffbe4; border-left:5px solid #ffb700; padding:14px 18px; border-radius:7px; margin:18px 0;}
-    .question { background:#eaf2ff; border-left:5px solid #6c63ff; padding:14px 18px; border-radius:7px; margin:18px 0;}
-    a, a:visited {color:#0984e3;}
-    .back { display:inline-block; margin-top:18px; background:#0984e3; color:#fff; padding:8px 18px; border-radius:6px; text-decoration:none;}
+    :root {
+      --primary: #0984e3;
+      --secondary: #6c63ff;
+      --accent: #fdcb6e;
+      --bg-light: #f7fafc;
+      --bg-dark: #181a23;
+      --card-light: #fff;
+      --card-dark: #23272f;
+      --border-light: #eaeaea;
+      --border-dark: #23243a;
+      --text-light: #1a1a1a;
+      --text-dark: #f6f7fa;
+      --shadow: 0 4px 24px #e7e5ec38;
+    }
+    body {
+      background: var(--bg-light);
+      color: var(--text-light);
+      font-family: 'Figtree', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+      font-size: 18px;
+    }
+    .dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 38px 0 24px 0;
+      text-align: center;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      position: relative;
+      box-shadow: 0 6px 32px #0984e342;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 8px 0;
+      font-weight: 800;
+    }
+    .subtitle {
+      font-size: 1.18rem;
+      font-weight: 400;
+    }
+    .theme-toggle {
+      position: absolute;
+      top: 34px; right: 30px;
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      padding: 7px 22px;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 3;
+    }
+    .dark .theme-toggle { background: var(--accent); color: #23272f; }
+    .container {
+      max-width: 1160px;
+      margin: 36px auto 20px auto;
+      background: var(--card-light);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 34px 30px 38px 220px;
+      min-height: 600px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .dark .container {
+      background: var(--card-dark);
+      box-shadow: 0 6px 32px #181a2396;
+    }
+    .sidebar {
+      position: absolute;
+      top: 34px; left: 16px; bottom: 36px;
+      width: 180px;
+      background: #fff3;
+      border-radius: 15px;
+      padding: 10px 13px 10px 7px;
+      font-size: 1rem;
+      box-shadow: 0 3px 12px #eaeaea12;
+      z-index: 2;
+      overflow-y: auto;
+      max-height: 82vh;
+    }
+    .dark .sidebar { background: #21242c; }
+
+    .sidebar h3 {
+      margin: 9px 0 7px 8px; font-size: 1.02rem; color: var(--primary);
+    }
+    .sidebar ul {
+      margin: 0 0 8px 0; padding: 0 0 0 15px;
+      list-style: none;
+    }
+    .sidebar li { margin: 6px 0; }
+    .sidebar a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 1.02rem;
+      font-weight: 600;
+      transition: color 0.18s;
+      padding: 2px 3px;
+      border-radius: 3px;
+      display: block;
+    }
+    .sidebar a:hover, .sidebar a.active { background: var(--primary); color: #fff; }
+    .dark .sidebar a { color: var(--accent);}
+    .dark .sidebar a:hover, .dark .sidebar a.active { background: var(--accent); color: #23272f; }
+
+    section { margin-bottom: 64px; }
+    h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 700;
+      scroll-margin-top: 100px;
+    }
+    .dark h2 { color: var(--accent);}
+    h3 { margin-bottom: 3px; }
+    .taglist { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 18px 0;}
+    .taglist code {
+      background: #eaf2ff;
+      color: #0984e3;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 1rem;
+      font-family: 'Figtree', monospace;
+    }
+    .dark .taglist code { background: #2f2e3a; color: #7fd0ff; }
+
+    .code-block {
+      background: #23272f;
+      color: #f6f7fa;
+      border-radius: 8px;
+      font-family: 'Figtree', monospace;
+      font-size: 1.06rem;
+      padding: 17px 13px;
+      margin: 17px 0 13px 0;
+      overflow-x: auto;
+    }
+    .note, .project, .question, .ref {
+      border-left: 6px solid var(--secondary);
+      background: #eaf2ff;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .dark .note, .dark .ref { background: #23243a; }
+    .project { background: #fffbe4; border-left:6px solid var(--accent);}
+    .dark .project {background: #39320f;}
+    .question { background: #ffe6e6; border-left:6px solid var(--primary);}
+    .dark .question {background:#43201a;}
+    .ref { border-left:6px solid #1abc9c;}
+    .dark .ref {border-left:6px solid #1abc9c;}
+    a, a:visited {color: var(--secondary);}
+    .dark a, .dark a:visited {color: var(--accent);}
+    .back {
+      display:inline-block; margin-top:18px;
+      background:var(--primary); color:#fff;
+      padding:9px 24px; border-radius:7px; text-decoration:none;
+      font-size:1.07rem; font-weight:600; transition:background 0.2s;}
     .back:hover {background:#04507a;}
+    .dark .back {background:var(--accent); color:#23272f;}
+    footer {
+      text-align: center;
+      color: #aaa;
+      margin: 40px 0 12px 0;
+      font-size: 1.04rem;
+    }
+    @media (max-width: 1024px) {
+      .container { padding: 32px 10px 38px 10px; }
+      .sidebar { display: none;}
+    }
+    @media (max-width: 700px) {
+      header {padding: 24px 0 12px 0;}
+      .container { padding: 12px 2vw 18px 2vw;}
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>CSS Study Guide</h1>
-    <div>Style your web pages with color and layout!</div>
+    <h1>CSS A-Z Study Guide</h1>
+    <div class="subtitle">All you need for styling websites — selectors, color, layout, flex, grid, animation, projects</div>
+    <button class="theme-toggle" id="themeBtn">🌙 Night Mode</button>
   </header>
   <div class="container">
-    <a href="index.html" class="back">&larr; Back to Home</a>
-    <h2>What is CSS?</h2>
-    <div class="note">
-      <b>CSS</b> means Cascading Style Sheets. It controls the look: color, size, layout, fonts, and more.
-    </div>
-    <h2>Basic CSS Example</h2>
-    <div class="code-block">
-&lt;style&gt;<br>
-  body { background: #f0f8ff; }<br>
-  h1 { color: #0984e3; font-size: 38px; }<br>
-  p { color: #222; font-size: 20px; }<br>
-&lt;/style&gt;
-    </div>
-    <div class="note">
-      Put <code>&lt;style&gt;</code> in your <code>&lt;head&gt;</code> section.
-    </div>
-    <h2>Box Model: Padding, Border, Margin</h2>
-    <div class="code-block">
-.box {
-  background: #eaf2ff;
-  padding: 12px;
-  border: 2px solid #0984e3;
-  margin: 20px;
-}
-    </div>
-    <div class="project">
-      <b>Mini Project: Style your About Me page!</b>
-      <div class="code-block">
-&lt;style&gt;<br>
-  body { background: #fffbe4; }<br>
-  h1 { color: #d7263d; font-size: 36px; }<br>
-  p { color: #222; font-size: 22px; }<br>
-&lt;/style&gt;
-      </div>
-      Try changing the colors and sizes!
-    </div>
-    <h2>CSS for Buttons</h2>
-    <div class="code-block">
-button {
-  background: #0984e3;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 7px 22px;
-  cursor: pointer;
-}
-button:hover {
-  background: #04507a;
-}
-    </div>
-    <h2>Practice Questions</h2>
-    <div class="question">
+    <nav class="sidebar" id="sidebar">
+      <h3>Contents</h3>
       <ul>
-        <li>Make one paragraph blue and bold.</li>
-        <li>Give your list a border.</li>
-        <li>Center your heading on the page using CSS.</li>
+        <li><a href="#intro">What is CSS?</a></li>
+        <li><a href="#syntax">CSS Syntax</a></li>
+        <li><a href="#selectors">Selectors</a></li>
+        <li><a href="#color">Color & Background</a></li>
+        <li><a href="#text">Fonts & Text</a></li>
+        <li><a href="#box">Box Model</a></li>
+        <li><a href="#layout">Layout: Flex & Grid</a></li>
+        <li><a href="#responsive">Responsive Design</a></li>
+        <li><a href="#position">Position</a></li>
+        <li><a href="#transition">Transitions & Animation</a></li>
+        <li><a href="#best">Best Practices</a></li>
+        <li><a href="#project">Mini Projects</a></li>
+        <li><a href="#ref">Learning Resources</a></li>
       </ul>
-    </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+
+    <section id="intro">
+      <h2>What is CSS?</h2>
+      <div class="note">
+        <b>CSS</b> (Cascading Style Sheets) is the language for styling HTML pages: colors, spacing, layout, fonts, animations, and more.
+      </div>
+    </section>
+
+    <section id="syntax">
+      <h2>CSS Syntax</h2>
+      <div class="code-block">
+selector {<br>
+  property: value;<br>
+}
+      </div>
+      <div class="note">
+        Example:<br>
+        <code>p { color: blue; font-size: 20px; }</code>
+      </div>
+    </section>
+
+    <section id="selectors">
+      <h2>Selectors</h2>
+      <div class="taglist">
+        <code>element</code>
+        <code>#id</code>
+        <code>.class</code>
+        <code>*</code>
+        <code>div p</code>
+        <code>div > p</code>
+        <code>a:hover</code>
+      </div>
+      <div class="code-block">
+/* All p tags */<br>
+p { color: #333; }<br><br>
+/* Element with id="main" */<br>
+#main { background: #eaf2ff; }<br><br>
+/* All elements with class="btn" */<br>
+.btn { padding: 10px; }
+      </div>
+      <div class="note">
+        <ul>
+          <li><b>#id</b> for unique elements, <b>.class</b> for groups.</li>
+          <li><b>:hover</b> for mouse-over effects.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="color">
+      <h2>Color & Background</h2>
+      <div class="taglist">
+        <code>color</code>
+        <code>background</code>
+        <code>background-color</code>
+        <code>background-image</code>
+        <code>opacity</code>
+      </div>
+      <div class="code-block">
+body {<br>
+  color: #222;<br>
+  background: #f0f8ff;<br>
+}<br><br>
+h1 {<br>
+  color: #0984e3;<br>
+}<br><br>
+div {<br>
+  background-image: url("bg.jpg");<br>
+  opacity: 0.8;<br>
+}
+      </div>
+      <div class="note">
+        Use color names, hex codes (#0984e3), rgb(), or hsl().
+      </div>
+    </section>
+
+    <section id="text">
+      <h2>Fonts & Text</h2>
+      <div class="taglist">
+        <code>font-family</code>
+        <code>font-size</code>
+        <code>font-weight</code>
+        <code>color</code>
+        <code>text-align</code>
+        <code>text-decoration</code>
+        <code>line-height</code>
+        <code>letter-spacing</code>
+        <code>text-shadow</code>
+      </div>
+      <div class="code-block">
+h1 {<br>
+  font-family: 'Figtree', Arial, sans-serif;<br>
+  font-size: 2.2rem;<br>
+  font-weight: 800;<br>
+  text-align: center;<br>
+  color: #0984e3;<br>
+  text-shadow: 2px 2px 8px #eaf2ff;<br>
+}<br>
+p {<br>
+  line-height: 1.6;<br>
+  letter-spacing: 0.5px;<br>
+}
+      </div>
+    </section>
+
+    <section id="box">
+      <h2>Box Model (Spacing & Borders)</h2>
+      <div class="taglist">
+        <code>margin</code>
+        <code>padding</code>
+        <code>border</code>
+        <code>box-sizing</code>
+        <code>width</code>
+        <code>height</code>
+        <code>border-radius</code>
+      </div>
+      <div class="code-block">
+.box {<br>
+  background: #eaf2ff;<br>
+  padding: 16px;<br>
+  border: 2px solid #0984e3;<br>
+  margin: 20px;<br>
+  border-radius: 10px;<br>
+  width: 300px;<br>
+  box-sizing: border-box;<br>
+}
+      </div>
+      <div class="note">
+        <ul>
+          <li><b>padding</b>: space inside the box</li>
+          <li><b>border</b>: the edge</li>
+          <li><b>margin</b>: space outside the box</li>
+          <li><b>border-radius</b>: rounded corners</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="layout">
+      <h2>Layout: Flex & Grid</h2>
+      <div class="taglist">
+        <code>display: flex</code>
+        <code>flex-direction</code>
+        <code>justify-content</code>
+        <code>align-items</code>
+        <code>gap</code>
+        <code>display: grid</code>
+        <code>grid-template-columns</code>
+        <code>grid-gap</code>
+      </div>
+      <h3>Flexbox Example</h3>
+      <div class="code-block">
+.container {<br>
+  display: flex;<br>
+  flex-direction: row;<br>
+  justify-content: space-between;<br>
+  align-items: center;<br>
+  gap: 20px;<br>
+}
+      </div>
+      <h3>Grid Example</h3>
+      <div class="code-block">
+.grid {<br>
+  display: grid;<br>
+  grid-template-columns: 1fr 1fr 1fr;<br>
+  gap: 24px;<br>
+}
+      </div>
+      <div class="note">
+        Flex is best for rows/columns. Grid is best for layouts with rows and columns.
+      </div>
+    </section>
+
+    <section id="responsive">
+      <h2>Responsive Design (Media Queries)</h2>
+      <div class="code-block">
+@media (max-width: 600px) {<br>
+  h1 { font-size: 1.4rem; }<br>
+  .container { padding: 8px; }<br>
+}
+      </div>
+      <div class="note">
+        Use <b>@media</b> rules to make your site look good on all screens (mobile, tablet, desktop).
+      </div>
+    </section>
+
+    <section id="position">
+      <h2>Position</h2>
+      <div class="taglist">
+        <code>position: static</code>
+        <code>position: relative</code>
+        <code>position: absolute</code>
+        <code>position: fixed</code>
+        <code>top</code>
+        <code>left</code>
+        <code>z-index</code>
+      </div>
+      <div class="code-block">
+.box {<br>
+  position: absolute;<br>
+  top: 50px;<br>
+  left: 100px;<br>
+  z-index: 10;<br>
+}
+      </div>
+      <div class="note">
+        <ul>
+          <li><b>relative</b>: moves element, keeps its space</li>
+          <li><b>absolute</b>: places anywhere inside nearest parent</li>
+          <li><b>fixed</b>: stays in place when scrolling</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="transition">
+      <h2>Transitions & Animation</h2>
+      <div class="code-block">
+.button {<br>
+  background: #0984e3;<br>
+  color: #fff;<br>
+  transition: background 0.3s, transform 0.2s;<br>
+}<br>
+.button:hover {<br>
+  background: #fdcb6e;<br>
+  color: #222;<br>
+  transform: scale(1.08);<br>
+}
+      </div>
+      <div class="note">
+        <ul>
+          <li><b>transition</b>: smooth property changes</li>
+          <li><b>transform</b>: scale, move, rotate</li>
+          <li><b>animation</b>: for more complex movement (see W3Schools/MDN for keyframes)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="best">
+      <h2>Best Practices</h2>
+      <ul>
+        <li>Keep CSS in a separate file (<b>style.css</b>) or in <code>&lt;style&gt;</code> in <code>&lt;head&gt;</code>.</li>
+        <li>Use classes for reusable styles, ids for unique styles.</li>
+        <li>Comment your code: <code>/* This is a comment */</code></li>
+        <li>Use <b>rem</b> or <b>em</b> for font sizes for better scaling.</li>
+        <li>Use browser DevTools (F12) to test CSS live.</li>
+      </ul>
+    </section>
+
+    <section id="project">
+      <h2>Mini Projects & Exercises</h2>
+      <div class="project">
+        <b>1. Stylish "About Me" Card</b>
+        <div class="code-block">
+&lt;div class="card"&gt;<br>
+  &lt;h2&gt;webTune1&lt;/h2&gt;<br>
+  &lt;p&gt;I love coding!&lt;/p&gt;<br>
+&lt;/div&gt;<br><br>
+&lt;style&gt;<br>
+.card {<br>
+  background: #fffbe4;<br>
+  color: #222;<br>
+  border-radius: 16px;<br>
+  box-shadow: 0 4px 16px #fdcb6e55;<br>
+  padding: 24px;<br>
+  text-align: center;<br>
+  width: 280px;<br>
+  margin: 18px auto;<br>
+  font-family: 'Figtree', Arial, sans-serif;<br>
+}<br>
+.card h2 { color: #0984e3; }<br>
+&lt;/style&gt;
+        </div>
+      </div>
+      <div class="project">
+        <b>2. Responsive Two-Column Layout</b>
+        <div class="code-block">
+&lt;div class="row"&gt;<br>
+  &lt;div class="col"&gt;Left&lt;/div&gt;<br>
+  &lt;div class="col"&gt;Right&lt;/div&gt;<br>
+&lt;/div&gt;<br><br>
+&lt;style&gt;<br>
+.row { display: flex; gap: 18px; }<br>
+.col { flex: 1; background: #eaf2ff; padding: 18px; border-radius: 7px; }<br>
+@media (max-width:600px) {<br>
+  .row { flex-direction: column; }<br>
+}<br>
+&lt;/style&gt;
+        </div>
+      </div>
+      <div class="question">
+        <b>Exercises:</b>
+        <ul>
+          <li>Make a button with rounded corners and a hover effect.</li>
+          <li>Change background color of your page based on the time of day (hint: use JS).</li>
+          <li>Try making a 3-column grid for your favorite foods.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="ref">
+      <h2>Trusted Learning Resources</h2>
+      <div class="ref">
+        <ul>
+          <li><a href="https://www.w3schools.com/css/" target="_blank">W3Schools CSS</a> — Interactive examples, all properties. </li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN Web Docs: CSS</a> — Deep reference, all selectors & layout topics.</li>
+          <li><a href="https://www.freecodecamp.org/learn/" target="_blank">freeCodeCamp</a> — Free, full CSS courses with projects.</li>
+          <li><a href="https://css-tricks.com/snippets/css/" target="_blank">CSS-Tricks Snippets</a> — Handy real-world code snippets.</li>
+          <li><a href="https://www.geeksforgeeks.org/css-introduction/" target="_blank">GeeksForGeeks CSS</a> — Articles & quizzes.</li>
+        </ul>
+        <b>Tip:</b> Search Google like: <em>"How to center a div in CSS"</em> and use W3Schools/MDN/CSS-Tricks for trusted answers.
+      </div>
+    </section>
     <a href="index.html" class="back">&larr; Back to Home</a>
   </div>
+  <footer>
+    Made by webTune1 • Keep learning & growing!<br>
+    Edit this file to add your own notes or more code.
+  </footer>
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    function setTheme(mode) {
+      if(mode==='dark') {
+        document.body.classList.add('dark');
+        themeBtn.innerText = "🌞 Day Mode";
+      } else {
+        document.body.classList.remove('dark');
+        themeBtn.innerText = "🌙 Night Mode";
+      }
+      localStorage.setItem('theme', mode);
+    }
+    themeBtn.onclick = function() {
+      setTheme(document.body.classList.contains('dark')?'light':'dark');
+    }
+    if(localStorage.getItem('theme')==='dark') setTheme('dark');
+
+    // Sidebar active link
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.sidebar a').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    // Scroll to anchor and highlight
+    window.addEventListener("hashchange", function() {
+      let id = location.hash.substring(1);
+      document.querySelectorAll('.sidebar a').forEach(x=>x.classList.remove('active'));
+      let active = document.querySelector('.sidebar a[href="#'+id+'"]');
+      if(active) active.classList.add('active');
+    });
+  </script>
 </body>
 </html>
