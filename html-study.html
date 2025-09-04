@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn HTML - Coding Course</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f8fa; margin:0;padding:0;}
+    header { text-align:center; background:#e17055; color:#fff; padding:36px 0 12px 0; border-bottom-left-radius:30px; border-bottom-right-radius:30px;}
+    .container { max-width:900px; margin:0 auto 40px auto; background:#fff; border-radius:18px; box-shadow:0 2px 12px #e2e2e2; padding:32px 18px;}
+    h1, h2 { color:#e17055;}
+    .code-block { background:#23272f; color:#f5f5f5; font-family:'Consolas',monospace; border-radius:8px; padding:15px 13px; margin:16px 0; font-size:15px;}
+    .note { background:#ffe6e6; border-left:5px solid #e17055; padding:13px 18px; border-radius:7px; margin:17px 0;}
+    .project { background:#fffbe4; border-left:5px solid #ffb700; padding:14px 18px; border-radius:7px; margin:18px 0;}
+    .question { background:#eaf2ff; border-left:5px solid #6c63ff; padding:14px 18px; border-radius:7px; margin:18px 0;}
+    a, a:visited {color:#e17055;}
+    .back { display:inline-block; margin-top:18px; background:#e17055; color:#fff; padding:8px 18px; border-radius:6px; text-decoration:none;}
+    .back:hover {background:#b84932;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HTML Study Guide</h1>
+    <div>All the basics you need to start!</div>
+  </header>
+  <div class="container">
+    <a href="index.html" class="back">&larr; Back to Home</a>
+    <h2>What is HTML?</h2>
+    <div class="note">
+      <b>HTML</b> is the language that gives structure to webpages. It uses tags like <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, etc.
+    </div>
+    <h2>Basic Structure</h2>
+    <div class="code-block">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+  &lt;head&gt;<br>
+    &lt;title&gt;My Page&lt;/title&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;body&gt;<br>
+    &lt;h1&gt;Hello!&lt;/h1&gt;<br>
+    &lt;p&gt;This is a paragraph of text.&lt;/p&gt;<br>
+  &lt;/body&gt;<br>
+&lt;/html&gt;
+    </div>
+    <div class="note">
+      <ul>
+        <li><b>&lt;h1&gt;...&lt;/h1&gt;</b>: Biggest heading.</li>
+        <li><b>&lt;p&gt;...&lt;/p&gt;</b>: Paragraph.</li>
+        <li><b>&lt;a href="..."&gt;...&lt;/a&gt;</b>: Link.</li>
+        <li><b>&lt;img src="..." alt="..."&gt;</b>: Image.</li>
+        <li><b>&lt;ul&gt;&lt;li&gt;</b>: List.</li>
+        <li><b>&lt;input&gt;, &lt;form&gt;</b>: Forms.</li>
+      </ul>
+    </div>
+    <h2>Common Tags</h2>
+    <div class="code-block">
+&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;p&gt;Paragraph text here.&lt;/p&gt;
+&lt;a href="https://example.com"&gt;Click me&lt;/a&gt;
+&lt;img src="image.jpg" alt="My image"&gt;
+&lt;ul&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ul&gt;
+    </div>
+    <h2>Mini Project: "About Me" Page</h2>
+    <div class="project">
+      <div class="code-block">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+  &lt;head&gt;<br>
+    &lt;title&gt;About Me&lt;/title&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;body&gt;<br>
+    &lt;h1&gt;My Name is [Your Name]&lt;/h1&gt;<br>
+    &lt;p&gt;I am from Angul, Odisha.&lt;/p&gt;<br>
+    &lt;ul&gt;<br>
+      &lt;li&gt;Coding&lt;/li&gt;<br>
+      &lt;li&gt;Music&lt;/li&gt;<br>
+      &lt;li&gt;Games&lt;/li&gt;<br>
+    &lt;/ul&gt;<br>
+    &lt;a href="https://www.w3schools.com/"&gt;Learn More&lt;/a&gt;<br>
+  &lt;/body&gt;<br>
+&lt;/html&gt;
+      </div>
+      <b>Try:</b> Change name, add hobbies, add a photo!
+    </div>
+    <h2>HTML Forms</h2>
+    <div class="code-block">
+&lt;form&gt;<br>
+  Name: &lt;input type="text" name="name"&gt;&lt;br&gt;<br>
+  Email: &lt;input type="email" name="email"&gt;&lt;br&gt;<br>
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;<br>
+&lt;/form&gt;
+    </div>
+    <h2>Practice Questions</h2>
+    <div class="question">
+      <ul>
+        <li>Add a heading for your favorite food and a link to a recipe.</li>
+        <li>Try making a list of your three favorite movies.</li>
+        <li>Add an image to your page.</li>
+      </ul>
+    </div>
+    <a href="index.html" class="back">&larr; Back to Home</a>
+  </div>
+</body>
+</html>
