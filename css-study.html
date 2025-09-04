@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn CSS - Coding Course</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f8fa; margin:0;padding:0;}
+    header { text-align:center; background:#0984e3; color:#fff; padding:36px 0 12px 0; border-bottom-left-radius:30px; border-bottom-right-radius:30px;}
+    .container { max-width:900px; margin:0 auto 40px auto; background:#fff; border-radius:18px; box-shadow:0 2px 12px #e2e2e2; padding:32px 18px;}
+    h1, h2 { color:#0984e3;}
+    .code-block { background:#23272f; color:#f5f5f5; font-family:'Consolas',monospace; border-radius:8px; padding:15px 13px; margin:16px 0; font-size:15px;}
+    .note { background:#c7ecee; border-left:5px solid #0984e3; padding:13px 18px; border-radius:7px; margin:17px 0;}
+    .project { background:#fffbe4; border-left:5px solid #ffb700; padding:14px 18px; border-radius:7px; margin:18px 0;}
+    .question { background:#eaf2ff; border-left:5px solid #6c63ff; padding:14px 18px; border-radius:7px; margin:18px 0;}
+    a, a:visited {color:#0984e3;}
+    .back { display:inline-block; margin-top:18px; background:#0984e3; color:#fff; padding:8px 18px; border-radius:6px; text-decoration:none;}
+    .back:hover {background:#04507a;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CSS Study Guide</h1>
+    <div>Style your web pages with color and layout!</div>
+  </header>
+  <div class="container">
+    <a href="index.html" class="back">&larr; Back to Home</a>
+    <h2>What is CSS?</h2>
+    <div class="note">
+      <b>CSS</b> means Cascading Style Sheets. It controls the look: color, size, layout, fonts, and more.
+    </div>
+    <h2>Basic CSS Example</h2>
+    <div class="code-block">
+&lt;style&gt;<br>
+  body { background: #f0f8ff; }<br>
+  h1 { color: #0984e3; font-size: 38px; }<br>
+  p { color: #222; font-size: 20px; }<br>
+&lt;/style&gt;
+    </div>
+    <div class="note">
+      Put <code>&lt;style&gt;</code> in your <code>&lt;head&gt;</code> section.
+    </div>
+    <h2>Box Model: Padding, Border, Margin</h2>
+    <div class="code-block">
+.box {
+  background: #eaf2ff;
+  padding: 12px;
+  border: 2px solid #0984e3;
+  margin: 20px;
+}
+    </div>
+    <div class="project">
+      <b>Mini Project: Style your About Me page!</b>
+      <div class="code-block">
+&lt;style&gt;<br>
+  body { background: #fffbe4; }<br>
+  h1 { color: #d7263d; font-size: 36px; }<br>
+  p { color: #222; font-size: 22px; }<br>
+&lt;/style&gt;
+      </div>
+      Try changing the colors and sizes!
+    </div>
+    <h2>CSS for Buttons</h2>
+    <div class="code-block">
+button {
+  background: #0984e3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 22px;
+  cursor: pointer;
+}
+button:hover {
+  background: #04507a;
+}
+    </div>
+    <h2>Practice Questions</h2>
+    <div class="question">
+      <ul>
+        <li>Make one paragraph blue and bold.</li>
+        <li>Give your list a border.</li>
+        <li>Center your heading on the page using CSS.</li>
+      </ul>
+    </div>
+    <a href="index.html" class="back">&larr; Back to Home</a>
+  </div>
+</body>
+</html>
