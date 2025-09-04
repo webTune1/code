@@ -2,239 +2,319 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Coding Course - Home</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <!-- Google Fonts for modern look -->
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Learn Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
+      --primary: #6c63ff;
       --html: #e17055;
       --css: #0984e3;
       --js: #fdcb6e;
       --py: #00b894;
-      --bg: #f6f8fa;
+      --bg: #f7fafc;
       --card: #fff;
-      --accent: #6c63ff;
-      --shadow: 0 4px 20px #d4d4d4a8;
+      --shadow: 0 4px 18px #e5e5e5a8;
+      --radius: 20px;
     }
     body {
       font-family: 'Figtree', Arial, sans-serif;
       background: var(--bg);
+      color: #222;
       margin: 0;
       padding: 0;
-      color: #1a1a1a;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark {
+      background: #1c1c24;
+      color: #f7fafc;
     }
     header {
-      background: var(--accent);
-      color: #fff;
       text-align: center;
-      padding: 44px 0 20px 0;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
-      box-shadow: 0 6px 32px #a5a5f040;
+      padding: 32px 0 18px 0;
+      background: var(--primary);
+      color: #fff;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      position: relative;
+      box-shadow: 0 4px 32px #6c63ff2a;
+      min-height: 72px;
     }
-    h1 {
-      font-size: 2.7rem;
-      margin: 0 0 8px 0;
+    .brand {
+      font-size: 2.1rem;
       font-weight: 700;
       letter-spacing: 1px;
+      margin: 0;
     }
     .subtitle {
-      font-size: 1.3rem;
+      font-size: 1.06rem;
       font-weight: 400;
+      color: #e2e2ff;
+      margin-top: 8px;
     }
+    .dark header { background: #23243a; color: #ffe6e6; }
+    .dark .subtitle { color: #ffe6e6; }
+    .theme-btn {
+      position: absolute;
+      top: 20px;
+      right: 26px;
+      background: #fff8;
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.18rem;
+      cursor: pointer;
+      box-shadow: 0 1px 4px #bbb2;
+      transition: background 0.2s;
+    }
+    .theme-btn:hover { background: #fff; }
+    .dark .theme-btn { background: #222c; color: #ffd700;}
     .cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 34px;
-      max-width: 1080px;
-      margin: 50px auto 24px auto;
+      gap: 23px;
+      max-width: 960px;
+      margin: 38px auto 90px auto;
+      padding: 0 12px;
     }
-    .lang-card {
+    .card {
+      flex: 1 1 220px;
+      min-width: 210px;
+      max-width: 280px;
       background: var(--card);
-      border-radius: 22px;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      flex: 1 1 270px;
-      min-width: 270px;
-      max-width: 320px;
-      padding: 36px 24px 24px 24px;
+      padding: 32px 18px 20px 18px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       transition: transform 0.16s, box-shadow 0.16s;
       position: relative;
       overflow: hidden;
+      border-top: 7px solid var(--primary);
     }
-    .lang-card:hover {
-      transform: translateY(-8px) scale(1.045);
-      box-shadow: 0 8px 32px #bdbdf1a6;
+    .card:hover {
+      transform: translateY(-7px) scale(1.035);
+      box-shadow: 0 8px 24px #bdbdf199;
       z-index: 2;
     }
-    .lang-badge {
-      display: inline-block;
-      font-size: 1.08rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      padding: 7px 18px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-      color: #fff;
+    .card.html { border-top: 7px solid var(--html);}
+    .card.css { border-top: 7px solid var(--css);}
+    .card.js { border-top: 7px solid var(--js);}
+    .card.py { border-top: 7px solid var(--py);}
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 13px;
+      color: var(--primary);
     }
-    .html { background: var(--html);}
-    .css { background: var(--css);}
-    .js { background: var(--js); color: #1a1a1a;}
-    .py { background: var(--py);}
-    .quicktags {
+    .card.html .card-title { color: var(--html);}
+    .card.css .card-title { color: var(--css);}
+    .card.js .card-title { color: var(--js);}
+    .card.py .card-title { color: var(--py);}
+    .card-desc {
+      font-size: 1.08rem;
+      color: #555;
       margin-bottom: 14px;
-      line-height: 2;
     }
-    .quicktags code {
-      background: #f3f3fa;
-      color: #333;
-      border-radius: 6px;
-      padding: 3px 8px;
-      font-size: 1.08rem;
-      margin-right: 5px;
-      font-family: 'Figtree', monospace;
-    }
-    .js .quicktags code { background: #fffbe4; }
-    .css .quicktags code { background: #eaf2ff; }
-    .html .quicktags code { background: #ffe6e6; }
-    .py .quicktags code { background: #d0ffe6; }
-    .study-link {
+    .dark .card { background: #23272f; }
+    .dark .card-title { color: #ffe6e6;}
+    .dark .card.html .card-title { color: #e17055;}
+    .dark .card.css .card-title { color: #7fd0ff;}
+    .dark .card.js .card-title { color: #ffe9ae;}
+    .dark .card.py .card-title { color: #47f8ae;}
+    .card-link {
       margin-top: auto;
-      font-size: 1.18rem;
+      font-size: 1.11rem;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--primary);
       text-decoration: none;
       background: #f5f6ff;
-      padding: 10px 24px;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 7px;
       box-shadow: 0 2px 8px #e2e2e2a0;
       border: none;
       transition: background 0.18s;
       display: inline-block;
+      margin-bottom: 7px;
     }
-    .study-link:hover {
-      background: var(--accent);
+    .card-link:hover {
+      background: var(--primary);
       color: #fff;
     }
-    footer {
-      text-align: center;
-      color: #aaa;
-      margin-top: 60px;
-      padding-bottom: 15px;
-      font-size: 1rem;
+    .dark .card-link { background: #292d38; color: #ffe6e6;}
+    .dark .card-link:hover { background: #6c63ff; color: #fff;}
+    .music-link {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 1.13rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      margin-top: 8px;
+      margin-left: 7px;
     }
-    @media (max-width: 1000px) {
-      .cards { flex-direction: column; align-items: center;}
-      .lang-card { width: 90%; max-width: 500px; min-width: 0; }
+    .music-link svg { font-size: 1.37rem; }
+    .dark .music-link { color: #ffe6e6;}
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      z-index: 100;
+      left: 0; right: 0; bottom: 0;
+      background: #fff;
+      box-shadow: 0 -2px 16px #a5a5f02f;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 62px;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
     }
-    @media (max-width: 600px) {
-      .cards { gap: 16px; }
-      .lang-card { padding: 24px 8vw 18px 8vw; }
-      h1 { font-size: 2rem;}
+    .dark .bottom-nav { background: #262937; }
+    .nav-btn {
+      background: none;
+      border: none;
+      font-size: 1.38rem;
+      color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      padding: 6px 6px 0 6px;
+      transition: color 0.18s;
+      border-radius: 10px;
+    }
+    .nav-btn:active,
+    .nav-btn.selected {
+      color: #fff;
+      background: var(--primary);
+    }
+    .dark .nav-btn { color: #ffe6e6;}
+    .dark .nav-btn.selected,
+    .dark .nav-btn:active { color: #262937; background: #ffe6e6;}
+    .nav-label {
+      font-size: 0.75rem;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+    @media (max-width: 700px) {
+      .cards { gap: 13px; }
+      .card { min-width: 92vw; max-width: 97vw; padding: 22px 5vw 18px 5vw;}
+      .brand { font-size: 1.45rem;}
+      .subtitle { font-size: 0.91rem;}
+      .music-link { font-size: 1rem;}
+      header { padding-top: 22px; padding-bottom: 10px;}
+    }
+    @media (max-width: 400px) {
+      .nav-label { display: none; }
+      .music-link { font-size: 0.91rem;}
+      .card-link { font-size: 0.98rem; padding: 8px 13px;}
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>📚 My Coding Course</h1>
-    <div class="subtitle">Learn HTML, CSS, JavaScript, Python — All the main tags & functions at a glance!</div>
+    <button class="theme-btn" id="themeBtn" title="Toggle Dark/Light">
+      <span id="themeIcon">🌙</span>
+    </button>
+    <div class="brand">Learn Code</div>
+    <div class="subtitle">Quick study for HTML, CSS, JS, Python</div>
   </header>
-  <div class="cards">
-
-    <!-- HTML Card -->
-    <div class="lang-card">
-      <span class="lang-badge html">HTML</span>
-      <div class="quicktags">
-        <code>&lt;!DOCTYPE&gt;</code>
-        <code>&lt;html&gt;</code>
-        <code>&lt;head&gt;</code>
-        <code>&lt;body&gt;</code>
-        <code>&lt;h1&gt;-&lt;h6&gt;</code>
-        <code>&lt;p&gt;</code>
-        <code>&lt;a&gt;</code>
-        <code>&lt;img&gt;</code>
-        <code>&lt;ul&gt;&lt;li&gt;</code>
-        <code>&lt;ol&gt;&lt;li&gt;</code>
-        <code>&lt;table&gt;</code>
-        <code>&lt;form&gt;</code>
-        <code>&lt;input&gt;</code>
-        <code>&lt;button&gt;</code>
+  <main>
+    <div class="cards">
+      <div class="card html">
+        <div class="card-title">HTML</div>
+        <div class="card-desc">Structure your web pages: tags, links, forms, media, tables, SEO & more.</div>
+        <a class="card-link" href="html-study.html">Start HTML</a>
       </div>
-      <a class="study-link" href="html-study.html">Full HTML Course →</a>
-    </div>
-
-    <!-- CSS Card -->
-    <div class="lang-card">
-      <span class="lang-badge css">CSS</span>
-      <div class="quicktags">
-        <code>color</code>
-        <code>background</code>
-        <code>font-size</code>
-        <code>margin</code>
-        <code>padding</code>
-        <code>border</code>
-        <code>display</code>
-        <code>flex</code>
-        <code>grid</code>
-        <code>position</code>
-        <code>text-align</code>
-        <code>box-shadow</code>
-        <code>hover</code>
-        <code>transition</code>
+      <div class="card css">
+        <div class="card-title">CSS</div>
+        <div class="card-desc">Make it beautiful: colors, fonts, layout, flex, grid, effects, responsive design.</div>
+        <a class="card-link" href="css-study.html">Start CSS</a>
       </div>
-      <a class="study-link" href="css-study.html">Full CSS Course →</a>
-    </div>
-
-    <!-- JavaScript Card -->
-    <div class="lang-card js">
-      <span class="lang-badge js">JavaScript</span>
-      <div class="quicktags">
-        <code>let</code>
-        <code>const</code>
-        <code>function</code>
-        <code>if / else</code>
-        <code>for / while</code>
-        <code>document.getElementById()</code>
-        <code>alert()</code>
-        <code>addEventListener</code>
-        <code>innerText</code>
-        <code>innerHTML</code>
-        <code>querySelector</code>
-        <code>Math</code>
-        <code>Array</code>
-        <code>Object</code>
+      <div class="card js">
+        <div class="card-title">JavaScript</div>
+        <div class="card-desc">Add interactivity: DOM, events, functions, arrays, mini projects, more.</div>
+        <a class="card-link" href="js-study.html">Start JS</a>
       </div>
-      <a class="study-link" href="js-study.html">Full JavaScript Course →</a>
-    </div>
-
-    <!-- Python Card -->
-    <div class="lang-card py">
-      <span class="lang-badge py">Python</span>
-      <div class="quicktags">
-        <code>print()</code>
-        <code>input()</code>
-        <code>if / elif / else</code>
-        <code>for / while</code>
-        <code>def</code>
-        <code>list</code>
-        <code>dict</code>
-        <code>len()</code>
-        <code>range()</code>
-        <code>import</code>
-        <code>open()</code>
-        <code>class</code>
-        <code>try / except</code>
+      <div class="card py">
+        <div class="card-title">Python</div>
+        <div class="card-desc">Learn to code: variables, loops, functions, lists, files, basics for everyone.</div>
+        <a class="card-link" href="python-study.html">Start Python</a>
       </div>
-      <a class="study-link" href="python-study.html">Full Python Course →</a>
     </div>
-
+    <a class="music-link" href="https://webtune1.github.io/Music" target="_blank" title="Listen to Music">
+      <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="10" fill="#6c63ff"/><path d="M16 8V15.5C16 17 14 17.5 13 16.5C12 15.5 13 13.5 14.5 14.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="16" r="2" fill="#fff"/></svg>
+      Listen to Music
+    </a>
+  </main>
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <button class="nav-btn selected" onclick="scrollToTop()">
+      <span>🏠</span>
+      <span class="nav-label">Home</span>
+    </button>
+    <button class="nav-btn" onclick="openMenu()">
+      <span>☰</span>
+      <span class="nav-label">Menu</span>
+    </button>
+    <a class="nav-btn" href="https://webtune1.github.io/Music" target="_blank">
+      <span>🎵</span>
+      <span class="nav-label">Music</span>
+    </a>
+  </nav>
+  <!-- Simple Menu Popup (for mobile nav) -->
+  <div id="menuModal" style="display:none;position:fixed;z-index:200;left:0;top:0;width:100vw;height:100vh;background:rgba(44,44,55,0.86);">
+    <div style="background:#fff;max-width:320px;margin:70px auto;border-radius:16px;box-shadow:0 3px 18px #0004;padding:34px 22px 24px 22px;position:relative;" class="dark-card">
+      <button onclick="closeMenu()" style="position:absolute;top:13px;right:17px;background:none;border:none;font-size:1.7rem;cursor:pointer;">✖️</button>
+      <div style="font-size:1.3rem;font-weight:700;margin-bottom:15px;">Menu</div>
+      <a href="html-study.html" class="card-link" style="margin-bottom:10px;display:block;">HTML Study</a>
+      <a href="css-study.html" class="card-link" style="margin-bottom:10px;display:block;">CSS Study</a>
+      <a href="js-study.html" class="card-link" style="margin-bottom:10px;display:block;">JS Study</a>
+      <a href="python-study.html" class="card-link" style="margin-bottom:10px;display:block;">Python Study</a>
+      <a href="https://webtune1.github.io/Music" target="_blank" class="card-link" style="margin-bottom:10px;display:block;">Music 🎵</a>
+      <a href="#" class="card-link" onclick="closeMenu()" style="display:block;">Close</a>
+    </div>
   </div>
-  <footer>
-    Made by webTune1 • Click any card to learn more • Edit this file to update your quick reference!
+  <footer style="text-align:center;color:#aaa;margin-top:30px;font-size:1.02rem;">
+    &copy; webTune1 — <span style="color:#6c63ff;">Learn Code</span>. <br>
+    Mobile ready. Edit to add your own links or features!
   </footer>
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    function setTheme(mode) {
+      if(mode==='dark') {
+        document.body.classList.add('dark');
+        themeIcon.textContent = "🌞";
+        document.querySelectorAll('.dark-card').forEach(card=>card.style.background="#23272f");
+      } else {
+        document.body.classList.remove('dark');
+        themeIcon.textContent = "🌙";
+        document.querySelectorAll('.dark-card').forEach(card=>card.style.background="#fff");
+      }
+      localStorage.setItem('theme', mode);
+    }
+    themeBtn.onclick = function() {
+      setTheme(document.body.classList.contains('dark')?'light':'dark');
+    }
+    if(localStorage.getItem('theme')==='dark') setTheme('dark');
+    // Bottom nav
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: "smooth" }); }
+    // Menu
+    function openMenu() { document.getElementById('menuModal').style.display = 'block'; }
+    function closeMenu() { document.getElementById('menuModal').style.display = 'none'; }
+    // Auto close menu on click outside
+    document.getElementById('menuModal').addEventListener('click', function(e) {
+      if (e.target === this) closeMenu();
+    });
+  </script>
 </body>
 </html>
