@@ -2,107 +2,563 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Learn HTML - Coding Course</title>
+  <title>HTML A-Z Study Guide (Beginner Friendly)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- Google Fonts for modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; background: #f6f8fa; margin:0;padding:0;}
-    header { text-align:center; background:#e17055; color:#fff; padding:36px 0 12px 0; border-bottom-left-radius:30px; border-bottom-right-radius:30px;}
-    .container { max-width:900px; margin:0 auto 40px auto; background:#fff; border-radius:18px; box-shadow:0 2px 12px #e2e2e2; padding:32px 18px;}
-    h1, h2 { color:#e17055;}
-    .code-block { background:#23272f; color:#f5f5f5; font-family:'Consolas',monospace; border-radius:8px; padding:15px 13px; margin:16px 0; font-size:15px;}
-    .note { background:#ffe6e6; border-left:5px solid #e17055; padding:13px 18px; border-radius:7px; margin:17px 0;}
-    .project { background:#fffbe4; border-left:5px solid #ffb700; padding:14px 18px; border-radius:7px; margin:18px 0;}
-    .question { background:#eaf2ff; border-left:5px solid #6c63ff; padding:14px 18px; border-radius:7px; margin:18px 0;}
-    a, a:visited {color:#e17055;}
-    .back { display:inline-block; margin-top:18px; background:#e17055; color:#fff; padding:8px 18px; border-radius:6px; text-decoration:none;}
+    :root {
+      --primary: #e17055;
+      --secondary: #6c63ff;
+      --bg-light: #f7fafc;
+      --bg-dark: #181a23;
+      --card-light: #fff;
+      --card-dark: #23272f;
+      --border-light: #eaeaea;
+      --border-dark: #2d2f38;
+      --text-light: #1a1a1a;
+      --text-dark: #f6f7fa;
+      --accent: #ffb700;
+      --shadow: 0 4px 24px #e7e5ec38;
+    }
+    body {
+      background: var(--bg-light);
+      color: var(--text-light);
+      font-family: 'Figtree', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+      font-size: 18px;
+    }
+    .dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 38px 0 24px 0;
+      text-align: center;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      position: relative;
+      box-shadow: 0 6px 32px #e1705542;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 8px 0;
+      font-weight: 800;
+    }
+    .subtitle {
+      font-size: 1.18rem;
+      font-weight: 400;
+    }
+    .theme-toggle {
+      position: absolute;
+      top: 34px; right: 30px;
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      padding: 7px 22px;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 3;
+    }
+    .dark .theme-toggle { background: var(--accent); color: #23272f; }
+    .container {
+      max-width: 1160px;
+      margin: 36px auto 20px auto;
+      background: var(--card-light);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 34px 30px 38px 220px;
+      min-height: 600px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .dark .container {
+      background: var(--card-dark);
+      box-shadow: 0 6px 32px #181a2396;
+    }
+    .sidebar {
+      position: absolute;
+      top: 34px; left: 16px; bottom: 36px;
+      width: 180px;
+      background: #fff3;
+      border-radius: 15px;
+      padding: 10px 13px 10px 7px;
+      font-size: 1rem;
+      box-shadow: 0 3px 12px #eaeaea12;
+      z-index: 2;
+      overflow-y: auto;
+      max-height: 82vh;
+    }
+    .dark .sidebar { background: #21242c; }
+
+    .sidebar h3 {
+      margin: 9px 0 7px 8px; font-size: 1.02rem; color: var(--primary);
+    }
+    .sidebar ul {
+      margin: 0 0 8px 0; padding: 0 0 0 15px;
+      list-style: none;
+    }
+    .sidebar li { margin: 6px 0; }
+    .sidebar a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 1.02rem;
+      font-weight: 600;
+      transition: color 0.18s;
+      padding: 2px 3px;
+      border-radius: 3px;
+      display: block;
+    }
+    .sidebar a:hover, .sidebar a.active { background: var(--primary); color: #fff; }
+    .dark .sidebar a { color: var(--accent);}
+    .dark .sidebar a:hover, .dark .sidebar a.active { background: var(--accent); color: #23272f; }
+
+    section { margin-bottom: 64px; }
+    h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 700;
+      scroll-margin-top: 100px;
+    }
+    .dark h2 { color: var(--accent);}
+    h3 { margin-bottom: 3px; }
+    .taglist { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 18px 0;}
+    .taglist code {
+      background: #ffe6e6;
+      color: #ce4949;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 1rem;
+      font-family: 'Figtree', monospace;
+    }
+    .dark .taglist code { background: #2f2e3a; color: #ffc0c0; }
+
+    .code-block {
+      background: #23272f;
+      color: #f6f7fa;
+      border-radius: 8px;
+      font-family: 'Figtree', monospace;
+      font-size: 1.06rem;
+      padding: 17px 13px;
+      margin: 17px 0 13px 0;
+      overflow-x: auto;
+    }
+    .note, .project, .question, .ref {
+      border-left: 6px solid var(--secondary);
+      background: #eaf2ff;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .dark .note, .dark .ref { background: #23243a; }
+    .project { background: #fffbe4; border-left:6px solid var(--accent);}
+    .dark .project {background: #39320f;}
+    .question { background: #ffe6e6; border-left:6px solid var(--primary);}
+    .dark .question {background:#43201a;}
+    .ref { border-left:6px solid #1abc9c;}
+    .dark .ref {border-left:6px solid #1abc9c;}
+    a, a:visited {color: var(--secondary);}
+    .dark a, .dark a:visited {color: var(--accent);}
+    .back {
+      display:inline-block; margin-top:18px;
+      background:var(--primary); color:#fff;
+      padding:9px 24px; border-radius:7px; text-decoration:none;
+      font-size:1.07rem; font-weight:600; transition:background 0.2s;}
     .back:hover {background:#b84932;}
+    .dark .back {background:var(--accent); color:#23272f;}
+    footer {
+      text-align: center;
+      color: #aaa;
+      margin: 40px 0 12px 0;
+      font-size: 1.04rem;
+    }
+    @media (max-width: 1024px) {
+      .container { padding: 32px 10px 38px 10px; }
+      .sidebar { display: none;}
+    }
+    @media (max-width: 700px) {
+      header {padding: 24px 0 12px 0;}
+      .container { padding: 12px 2vw 18px 2vw;}
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>HTML Study Guide</h1>
-    <div>All the basics you need to start!</div>
+    <h1>HTML A-Z Study Guide</h1>
+    <div class="subtitle">Everything a beginner needs — tags, structure, forms, tables, SEO, best practices, projects</div>
+    <button class="theme-toggle" id="themeBtn">🌙 Night Mode</button>
   </header>
   <div class="container">
-    <a href="index.html" class="back">&larr; Back to Home</a>
-    <h2>What is HTML?</h2>
-    <div class="note">
-      <b>HTML</b> is the language that gives structure to webpages. It uses tags like <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, etc.
-    </div>
-    <h2>Basic Structure</h2>
-    <div class="code-block">
-&lt;!DOCTYPE html&gt;<br>
-&lt;html&gt;<br>
-  &lt;head&gt;<br>
-    &lt;title&gt;My Page&lt;/title&gt;<br>
-  &lt;/head&gt;<br>
-  &lt;body&gt;<br>
-    &lt;h1&gt;Hello!&lt;/h1&gt;<br>
-    &lt;p&gt;This is a paragraph of text.&lt;/p&gt;<br>
-  &lt;/body&gt;<br>
-&lt;/html&gt;
-    </div>
-    <div class="note">
+    <nav class="sidebar" id="sidebar">
+      <h3>Contents</h3>
       <ul>
-        <li><b>&lt;h1&gt;...&lt;/h1&gt;</b>: Biggest heading.</li>
-        <li><b>&lt;p&gt;...&lt;/p&gt;</b>: Paragraph.</li>
-        <li><b>&lt;a href="..."&gt;...&lt;/a&gt;</b>: Link.</li>
-        <li><b>&lt;img src="..." alt="..."&gt;</b>: Image.</li>
-        <li><b>&lt;ul&gt;&lt;li&gt;</b>: List.</li>
-        <li><b>&lt;input&gt;, &lt;form&gt;</b>: Forms.</li>
+        <li><a href="#intro">What is HTML?</a></li>
+        <li><a href="#structure">Basic Structure</a></li>
+        <li><a href="#tags">A-Z Tags</a></li>
+        <li><a href="#attributes">Common Attributes</a></li>
+        <li><a href="#text">Text & Headings</a></li>
+        <li><a href="#links">Links & Navigation</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#images">Images & Media</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#semantics">Semantic HTML</a></li>
+        <li><a href="#seo">SEO Basics</a></li>
+        <li><a href="#best">Best Practices</a></li>
+        <li><a href="#project">Mini Projects</a></li>
+        <li><a href="#ref">Learning Resources</a></li>
       </ul>
-    </div>
-    <h2>Common Tags</h2>
-    <div class="code-block">
-&lt;h1&gt;Heading 1&lt;/h1&gt;
-&lt;h2&gt;Heading 2&lt;/h2&gt;
-&lt;p&gt;Paragraph text here.&lt;/p&gt;
-&lt;a href="https://example.com"&gt;Click me&lt;/a&gt;
-&lt;img src="image.jpg" alt="My image"&gt;
-&lt;ul&gt;
-  &lt;li&gt;First item&lt;/li&gt;
-  &lt;li&gt;Second item&lt;/li&gt;
-&lt;/ul&gt;
-    </div>
-    <h2>Mini Project: "About Me" Page</h2>
-    <div class="project">
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <section id="intro">
+      <h2>What is HTML?</h2>
+      <div class="note">
+        <b>HTML</b> (HyperText Markup Language) is the standard language for building web pages. It tells browsers what to display and how to structure content.
+      </div>
+    </section>
+
+    <section id="structure">
+      <h2>Basic Structure</h2>
       <div class="code-block">
 &lt;!DOCTYPE html&gt;<br>
 &lt;html&gt;<br>
   &lt;head&gt;<br>
-    &lt;title&gt;About Me&lt;/title&gt;<br>
+    &lt;title&gt;My Page&lt;/title&gt;<br>
+    &lt;meta charset="UTF-8"&gt;<br>
   &lt;/head&gt;<br>
   &lt;body&gt;<br>
-    &lt;h1&gt;My Name is [Your Name]&lt;/h1&gt;<br>
-    &lt;p&gt;I am from Angul, Odisha.&lt;/p&gt;<br>
-    &lt;ul&gt;<br>
-      &lt;li&gt;Coding&lt;/li&gt;<br>
-      &lt;li&gt;Music&lt;/li&gt;<br>
-      &lt;li&gt;Games&lt;/li&gt;<br>
-    &lt;/ul&gt;<br>
-    &lt;a href="https://www.w3schools.com/"&gt;Learn More&lt;/a&gt;<br>
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;<br>
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;<br>
   &lt;/body&gt;<br>
 &lt;/html&gt;
       </div>
-      <b>Try:</b> Change name, add hobbies, add a photo!
-    </div>
-    <h2>HTML Forms</h2>
-    <div class="code-block">
+      <div class="note">
+        - <b>&lt;!DOCTYPE html&gt;</b>: Declares this is an HTML5 document.<br>
+        - <b>&lt;html&gt;</b>: Root element.<br>
+        - <b>&lt;head&gt;</b>: Info for browser (title, meta).<br>
+        - <b>&lt;body&gt;</b>: Main visible content.
+      </div>
+    </section>
+
+    <section id="tags">
+      <h2>A-Z HTML Tags (Most Useful)</h2>
+      <div class="taglist">
+        <code>&lt;!DOCTYPE&gt;</code><code>&lt;html&gt;</code><code>&lt;head&gt;</code><code>&lt;title&gt;</code>
+        <code>&lt;meta&gt;</code><code>&lt;body&gt;</code><code>&lt;h1&gt;-&lt;h6&gt;</code><code>&lt;p&gt;</code>
+        <code>&lt;br&gt;</code><code>&lt;hr&gt;</code><code>&lt;a&gt;</code><code>&lt;img&gt;</code>
+        <code>&lt;ul&gt;</code><code>&lt;ol&gt;</code><code>&lt;li&gt;</code><code>&lt;div&gt;</code>
+        <code>&lt;span&gt;</code><code>&lt;strong&gt;</code><code>&lt;em&gt;</code><code>&lt;table&gt;</code>
+        <code>&lt;tr&gt;</code><code>&lt;td&gt;</code><code>&lt;th&gt;</code><code>&lt;thead&gt;</code>
+        <code>&lt;tbody&gt;</code><code>&lt;tfoot&gt;</code><code>&lt;form&gt;</code><code>&lt;input&gt;</code>
+        <code>&lt;textarea&gt;</code><code>&lt;select&gt;</code><code>&lt;option&gt;</code>
+        <code>&lt;button&gt;</code><code>&lt;label&gt;</code><code>&lt;iframe&gt;</code>
+        <code>&lt;audio&gt;</code><code>&lt;video&gt;</code>
+        <code>&lt;section&gt;</code><code>&lt;article&gt;</code><code>&lt;nav&gt;</code>
+        <code>&lt;header&gt;</code><code>&lt;footer&gt;</code><code>&lt;main&gt;</code>
+        <code>&lt;aside&gt;</code><code>&lt;figure&gt;</code><code>&lt;figcaption&gt;</code>
+        <code>&lt;details&gt;</code><code>&lt;summary&gt;</code><code>&lt;mark&gt;</code>
+        <code>&lt;progress&gt;</code><code>&lt;meter&gt;</code>
+      </div>
+      <div class="note">
+        <b>Tip:</b> Not every tag is needed in every project. Learn the basics first!
+      </div>
+    </section>
+
+    <section id="attributes">
+      <h2>Common Attributes</h2>
+      <ul>
+        <li><b>id</b>: Unique name for an element. <code>&lt;p id="main"&gt;</code></li>
+        <li><b>class</b>: Group elements for styling. <code>&lt;div class="card"&gt;</code></li>
+        <li><b>style</b>: Inline CSS. <code>&lt;h1 style="color:red"&gt;</code></li>
+        <li><b>src</b>: Image or media source. <code>&lt;img src="pic.jpg"&gt;</code></li>
+        <li><b>href</b>: Link URL. <code>&lt;a href="https://..."&gt;</code></li>
+        <li><b>alt</b>: Image description for accessibility. <code>&lt;img alt="desc"&gt;</code></li>
+        <li><b>title</b>: Tooltip text.</li>
+        <li><b>value</b>: Default value for inputs.</li>
+        <li><b>type</b>: Input type (text, password, email, etc.).</li>
+        <li><b>placeholder</b>: Hint text for input.</li>
+        <li><b>disabled</b>, <b>checked</b>, <b>readonly</b>, <b>required</b>: For forms.</li>
+      </ul>
+    </section>
+
+    <section id="text">
+      <h2>Text & Headings</h2>
+      <div class="code-block">
+&lt;h1&gt;Main Title&lt;/h1&gt;<br>
+&lt;h2&gt;Subtitle&lt;/h2&gt;<br>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;<br>
+&lt;strong&gt;Bold&lt;/strong&gt; &lt;em&gt;Italic&lt;/em&gt;<br>
+&lt;br&gt; (line break) &nbsp; &lt;hr&gt; (horizontal rule)
+      </div>
+      <div class="note">
+        - Use <b>headings</b> for titles and organize content.<br>
+        - <b>h1</b> is biggest; <b>h6</b> is smallest.<br>
+        - <b>&lt;br&gt;</b> = new line; <b>&lt;hr&gt;</b> = horizontal line.
+      </div>
+    </section>
+
+    <section id="links">
+      <h2>Links & Navigation</h2>
+      <div class="code-block">
+&lt;a href="https://www.example.com"&gt;Visit Example&lt;/a&gt;<br>
+&lt;a href="page2.html"&gt;Go to Page 2&lt;/a&gt;<br>
+&lt;a href="#section3"&gt;Jump to Section 3&lt;/a&gt;
+      </div>
+      <div class="note">
+        - <b>href</b> is the link URL.<br>
+        - Use <b>#id</b> to jump to a section on the same page.
+      </div>
+    </section>
+
+    <section id="lists">
+      <h2>Lists (ul, ol, li)</h2>
+      <div class="code-block">
+&lt;ul&gt;<br>
+  &lt;li&gt;Item 1&lt;/li&gt;<br>
+  &lt;li&gt;Item 2&lt;/li&gt;<br>
+&lt;/ul&gt;<br>
+&lt;ol&gt;<br>
+  &lt;li&gt;First&lt;/li&gt;<br>
+  &lt;li&gt;Second&lt;/li&gt;<br>
+&lt;/ol&gt;
+      </div>
+      <div class="note">
+        - <b>ul</b>: Unordered list (bullets).<br>
+        - <b>ol</b>: Ordered list (numbers).<br>
+        - <b>li</b>: List item.
+      </div>
+    </section>
+
+    <section id="images">
+      <h2>Images & Media</h2>
+      <div class="code-block">
+&lt;img src="photo.jpg" alt="My Photo" width="200"&gt;<br>
+&lt;audio controls src="music.mp3"&gt;&lt;/audio&gt;<br>
+&lt;video controls width="300" src="movie.mp4"&gt;&lt;/video&gt;
+      </div>
+      <div class="note">
+        - Always use <b>alt</b> for images (for accessibility & SEO).<br>
+        - <b>controls</b> adds play/pause for audio/video.
+      </div>
+    </section>
+
+    <section id="tables">
+      <h2>Tables</h2>
+      <div class="code-block">
+&lt;table&gt;<br>
+  &lt;thead&gt;<br>
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;<br>
+  &lt;/thead&gt;<br>
+  &lt;tbody&gt;<br>
+    &lt;tr&gt;&lt;td&gt;Alice&lt;/td&gt;&lt;td&gt;21&lt;/td&gt;&lt;/tr&gt;<br>
+    &lt;tr&gt;&lt;td&gt;Bob&lt;/td&gt;&lt;td&gt;23&lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;/tbody&gt;<br>
+&lt;/table&gt;
+      </div>
+      <div class="note">
+        - <b>table</b>: Table wrapper<br>
+        - <b>tr</b>: Table row<br>
+        - <b>th</b>: Table header<br>
+        - <b>td</b>: Table data/cell
+      </div>
+    </section>
+
+    <section id="forms">
+      <h2>Forms (User Input)</h2>
+      <div class="code-block">
 &lt;form&gt;<br>
-  Name: &lt;input type="text" name="name"&gt;&lt;br&gt;<br>
+  Name: &lt;input type="text" name="name" required&gt;&lt;br&gt;<br>
   Email: &lt;input type="email" name="email"&gt;&lt;br&gt;<br>
+  Password: &lt;input type="password" name="pass"&gt;&lt;br&gt;<br>
+  Gender:<br>
+    &lt;input type="radio" name="gender" value="M"&gt; Male<br>
+    &lt;input type="radio" name="gender" value="F"&gt; Female<br>
+  Hobbies:<br>
+    &lt;input type="checkbox" name="hobby" value="music"&gt; Music<br>
+    &lt;input type="checkbox" name="hobby" value="games"&gt; Games<br>
   &lt;button type="submit"&gt;Submit&lt;/button&gt;<br>
 &lt;/form&gt;
-    </div>
-    <h2>Practice Questions</h2>
-    <div class="question">
+      </div>
+      <div class="note">
+        - <b>type</b> can be text, email, password, checkbox, radio, etc.<br>
+        - Use <b>required</b> for fields that must be filled.
+      </div>
+      <div class="code-block">
+&lt;select name="city"&gt;<br>
+  &lt;option&gt;Angul&lt;/option&gt;<br>
+  &lt;option&gt;Cuttack&lt;/option&gt;<br>
+&lt;/select&gt;
+      </div>
+    </section>
+
+    <section id="semantics">
+      <h2>Semantic HTML (Clean, Accessible Code)</h2>
+      <div class="code-block">
+&lt;header&gt;...&lt;/header&gt;<br>
+&lt;nav&gt;...&lt;/nav&gt;<br>
+&lt;main&gt;...&lt;/main&gt;<br>
+&lt;section&gt;...&lt;/section&gt;<br>
+&lt;article&gt;...&lt;/article&gt;<br>
+&lt;aside&gt;...&lt;/aside&gt;<br>
+&lt;footer&gt;...&lt;/footer&gt;
+      </div>
+      <div class="note">
+        - Use these tags to show what each part of your page means.<br>
+        - Helps with SEO and accessibility (screen readers).
+      </div>
+    </section>
+
+    <section id="seo">
+      <h2>SEO Basics (Get Found on Google!)</h2>
       <ul>
-        <li>Add a heading for your favorite food and a link to a recipe.</li>
-        <li>Try making a list of your three favorite movies.</li>
-        <li>Add an image to your page.</li>
+        <li>Always use <b>&lt;title&gt;</b> in <b>&lt;head&gt;</b>.</li>
+        <li>Use <b>&lt;meta name="description"&gt;</b> for page summary.</li>
+        <li>Use <b>headings (h1, h2...)</b> properly.</li>
+        <li>Add <b>alt</b> to all images.</li>
+        <li>Structure with semantic tags.</li>
+        <li>Keep code clean and readable!</li>
       </ul>
-    </div>
+      <div class="code-block">
+&lt;meta name="description" content="Learn HTML A-Z for beginners: tags, forms, SEO, projects."&gt;
+      </div>
+    </section>
+
+    <section id="best">
+      <h2>Best Practices</h2>
+      <ul>
+        <li>Always close your tags.</li>
+        <li>Indent code for readability.</li>
+        <li>Use lowercase for tags and attributes.</li>
+        <li>Use <b>alt</b> text for all images.</li>
+        <li>Test your page in different browsers/devices.</li>
+        <li>Comment your code: <code>&lt;!-- This is a comment --&gt;</code></li>
+      </ul>
+    </section>
+
+    <section id="project">
+      <h2>Mini Projects & Exercises</h2>
+      <div class="project">
+        <b>1. "About Me" Page</b>
+        <div class="code-block">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+  &lt;head&gt;<br>
+    &lt;title&gt;About Me&lt;/title&gt;<br>
+    &lt;meta charset="UTF-8"&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;body&gt;<br>
+    &lt;header&gt;<br>
+      &lt;h1&gt;My Name is webTune1&lt;/h1&gt;<br>
+      &lt;p&gt;I am from Angul, Odisha.&lt;/p&gt;<br>
+    &lt;/header&gt;<br>
+    &lt;main&gt;<br>
+      &lt;h2&gt;My Hobbies&lt;/h2&gt;<br>
+      &lt;ul&gt;<br>
+        &lt;li&gt;Coding&lt;/li&gt;<br>
+        &lt;li&gt;Music&lt;/li&gt;<br>
+        &lt;li&gt;Games&lt;/li&gt;<br>
+      &lt;/ul&gt;<br>
+      &lt;img src="photo.jpg" alt="My Photo" width="160"&gt;<br>
+    &lt;/main&gt;<br>
+    &lt;footer&gt;<br>
+      &lt;p&gt;Find me on &lt;a href="https://github.com/webTune1"&gt;GitHub&lt;/a&gt;&lt;/p&gt;<br>
+    &lt;/footer&gt;<br>
+  &lt;/body&gt;<br>
+&lt;/html&gt;
+        </div>
+      </div>
+      <div class="project">
+        <b>2. Contact Form</b>
+        <div class="code-block">
+&lt;form&gt;<br>
+  Name: &lt;input type="text" name="name" required&gt;&lt;br&gt;<br>
+  Email: &lt;input type="email" name="email"&gt;&lt;br&gt;<br>
+  Message:&lt;br&gt;<br>
+  &lt;textarea name="msg" rows="4" cols="30"&gt;&lt;/textarea&gt;&lt;br&gt;<br>
+  &lt;button type="submit"&gt;Send&lt;/button&gt;<br>
+&lt;/form&gt;
+        </div>
+      </div>
+      <div class="project">
+        <b>3. Responsive Table</b>
+        <div class="code-block">
+&lt;table border="1"&gt;<br>
+  &lt;tr&gt;&lt;th&gt;Fruit&lt;/th&gt;&lt;th&gt;Color&lt;/th&gt;&lt;/tr&gt;<br>
+  &lt;tr&gt;&lt;td&gt;Apple&lt;/td&gt;&lt;td&gt;Red&lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;tr&gt;&lt;td&gt;Banana&lt;/td&gt;&lt;td&gt;Yellow&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;
+        </div>
+      </div>
+      <div class="question">
+        <b>Exercises:</b>
+        <ul>
+          <li>Make a page about your favorite food using at least 5 different tags.</li>
+          <li>Add a link to a YouTube video using the <code>&lt;iframe&gt;</code> tag.</li>
+          <li>Make a 3-row, 2-column table showing your top 3 games or movies.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="ref">
+      <h2>Trusted Learning Resources</h2>
+      <div class="ref">
+        <ul>
+          <li><a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML</a> — Very beginner-friendly, interactive.</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Web Docs: HTML</a> — Best reference for all tags, attributes, best practices.</li>
+          <li><a href="https://www.freecodecamp.org/learn/" target="_blank">freeCodeCamp</a> — Free, full HTML+CSS courses with projects.</li>
+          <li><a href="https://www.geeksforgeeks.org/html-introduction/" target="_blank">GeeksForGeeks HTML</a> — Extra articles and quizzes.</li>
+          <li><a href="https://www.programiz.com/html" target="_blank">Programiz HTML</a> — Simple explanations and examples.</li>
+        </ul>
+        <b>Tip:</b> Search Google like: <em>"How to use &lt;form&gt; tag in HTML"</em> and use W3Schools or MDN for trusted examples.
+      </div>
+    </section>
     <a href="index.html" class="back">&larr; Back to Home</a>
   </div>
+  <footer>
+    Made by webTune1 • Keep learning & growing!<br>
+    Edit this file to add your own notes or more code.
+  </footer>
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    function setTheme(mode) {
+      if(mode==='dark') {
+        document.body.classList.add('dark');
+        themeBtn.innerText = "🌞 Day Mode";
+      } else {
+        document.body.classList.remove('dark');
+        themeBtn.innerText = "🌙 Night Mode";
+      }
+      localStorage.setItem('theme', mode);
+    }
+    themeBtn.onclick = function() {
+      setTheme(document.body.classList.contains('dark')?'light':'dark');
+    }
+    if(localStorage.getItem('theme')==='dark') setTheme('dark');
+
+    // Sidebar active link
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.sidebar a').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    // Scroll to anchor and highlight
+    window.addEventListener("hashchange", function() {
+      let id = location.hash.substring(1);
+      document.querySelectorAll('.sidebar a').forEach(x=>x.classList.remove('active'));
+      let active = document.querySelector('.sidebar a[href="#'+id+'"]');
+      if(active) active.classList.add('active');
+    });
+  </script>
 </body>
 </html>
