@@ -2,33 +2,239 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Learn Coding - Home</title>
+  <title>My Coding Course - Home</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- Google Fonts for modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; background: #f6f8fa; margin:0;padding:0; }
-    header { text-align:center; background:#6c63ff; color:#fff; padding:36px 0 12px 0; border-bottom-left-radius:30px; border-bottom-right-radius:30px;}
-    h1 {margin-bottom:0;}
-    .course-list { max-width:500px; margin:30px auto; background:#fff; border-radius:20px; box-shadow:0 2px 12px #e2e2e2; padding:24px;}
-    .course-list a { display:block; padding:20px 0; font-size:22px; color:#6c63ff; text-decoration:none; border-bottom:1px solid #eee; transition: background 0.2s;}
-    .course-list a:last-child { border-bottom:none;}
-    .course-list a:hover { background:#f0f0fa;}
-    footer { text-align:center; color:#aaa; margin-top:58px; padding-bottom:13px;}
+    :root {
+      --html: #e17055;
+      --css: #0984e3;
+      --js: #fdcb6e;
+      --py: #00b894;
+      --bg: #f6f8fa;
+      --card: #fff;
+      --accent: #6c63ff;
+      --shadow: 0 4px 20px #d4d4d4a8;
+    }
+    body {
+      font-family: 'Figtree', Arial, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+      color: #1a1a1a;
+    }
+    header {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 44px 0 20px 0;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 6px 32px #a5a5f040;
+    }
+    h1 {
+      font-size: 2.7rem;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 34px;
+      max-width: 1080px;
+      margin: 50px auto 24px auto;
+    }
+    .lang-card {
+      background: var(--card);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      flex: 1 1 270px;
+      min-width: 270px;
+      max-width: 320px;
+      padding: 36px 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.16s, box-shadow 0.16s;
+      position: relative;
+      overflow: hidden;
+    }
+    .lang-card:hover {
+      transform: translateY(-8px) scale(1.045);
+      box-shadow: 0 8px 32px #bdbdf1a6;
+      z-index: 2;
+    }
+    .lang-badge {
+      display: inline-block;
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 7px 18px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .html { background: var(--html);}
+    .css { background: var(--css);}
+    .js { background: var(--js); color: #1a1a1a;}
+    .py { background: var(--py);}
+    .quicktags {
+      margin-bottom: 14px;
+      line-height: 2;
+    }
+    .quicktags code {
+      background: #f3f3fa;
+      color: #333;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 1.08rem;
+      margin-right: 5px;
+      font-family: 'Figtree', monospace;
+    }
+    .js .quicktags code { background: #fffbe4; }
+    .css .quicktags code { background: #eaf2ff; }
+    .html .quicktags code { background: #ffe6e6; }
+    .py .quicktags code { background: #d0ffe6; }
+    .study-link {
+      margin-top: auto;
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      background: #f5f6ff;
+      padding: 10px 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #e2e2e2a0;
+      border: none;
+      transition: background 0.18s;
+      display: inline-block;
+    }
+    .study-link:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    footer {
+      text-align: center;
+      color: #aaa;
+      margin-top: 60px;
+      padding-bottom: 15px;
+      font-size: 1rem;
+    }
+    @media (max-width: 1000px) {
+      .cards { flex-direction: column; align-items: center;}
+      .lang-card { width: 90%; max-width: 500px; min-width: 0; }
+    }
+    @media (max-width: 600px) {
+      .cards { gap: 16px; }
+      .lang-card { padding: 24px 8vw 18px 8vw; }
+      h1 { font-size: 2rem;}
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>📚 Welcome to My Coding Course</h1>
-    <div style="font-size:17px;">Select a language to start learning</div>
+    <h1>📚 My Coding Course</h1>
+    <div class="subtitle">Learn HTML, CSS, JavaScript, Python — All the main tags & functions at a glance!</div>
   </header>
-  <div class="course-list">
-    <a href="html-study.html">Learn HTML</a>
-    <a href="css-study.html">Learn CSS</a>
-    <a href="js-study.html">Learn JavaScript</a>
-    <a href="python-study.html">Learn Python</a>
+  <div class="cards">
+
+    <!-- HTML Card -->
+    <div class="lang-card">
+      <span class="lang-badge html">HTML</span>
+      <div class="quicktags">
+        <code>&lt;!DOCTYPE&gt;</code>
+        <code>&lt;html&gt;</code>
+        <code>&lt;head&gt;</code>
+        <code>&lt;body&gt;</code>
+        <code>&lt;h1&gt;-&lt;h6&gt;</code>
+        <code>&lt;p&gt;</code>
+        <code>&lt;a&gt;</code>
+        <code>&lt;img&gt;</code>
+        <code>&lt;ul&gt;&lt;li&gt;</code>
+        <code>&lt;ol&gt;&lt;li&gt;</code>
+        <code>&lt;table&gt;</code>
+        <code>&lt;form&gt;</code>
+        <code>&lt;input&gt;</code>
+        <code>&lt;button&gt;</code>
+      </div>
+      <a class="study-link" href="html-study.html">Full HTML Course →</a>
+    </div>
+
+    <!-- CSS Card -->
+    <div class="lang-card">
+      <span class="lang-badge css">CSS</span>
+      <div class="quicktags">
+        <code>color</code>
+        <code>background</code>
+        <code>font-size</code>
+        <code>margin</code>
+        <code>padding</code>
+        <code>border</code>
+        <code>display</code>
+        <code>flex</code>
+        <code>grid</code>
+        <code>position</code>
+        <code>text-align</code>
+        <code>box-shadow</code>
+        <code>hover</code>
+        <code>transition</code>
+      </div>
+      <a class="study-link" href="css-study.html">Full CSS Course →</a>
+    </div>
+
+    <!-- JavaScript Card -->
+    <div class="lang-card js">
+      <span class="lang-badge js">JavaScript</span>
+      <div class="quicktags">
+        <code>let</code>
+        <code>const</code>
+        <code>function</code>
+        <code>if / else</code>
+        <code>for / while</code>
+        <code>document.getElementById()</code>
+        <code>alert()</code>
+        <code>addEventListener</code>
+        <code>innerText</code>
+        <code>innerHTML</code>
+        <code>querySelector</code>
+        <code>Math</code>
+        <code>Array</code>
+        <code>Object</code>
+      </div>
+      <a class="study-link" href="js-study.html">Full JavaScript Course →</a>
+    </div>
+
+    <!-- Python Card -->
+    <div class="lang-card py">
+      <span class="lang-badge py">Python</span>
+      <div class="quicktags">
+        <code>print()</code>
+        <code>input()</code>
+        <code>if / elif / else</code>
+        <code>for / while</code>
+        <code>def</code>
+        <code>list</code>
+        <code>dict</code>
+        <code>len()</code>
+        <code>range()</code>
+        <code>import</code>
+        <code>open()</code>
+        <code>class</code>
+        <code>try / except</code>
+      </div>
+      <a class="study-link" href="python-study.html">Full Python Course →</a>
+    </div>
+
   </div>
   <footer>
-    Edit and add your own notes as you grow! <br>
-    &copy; webTune1 Coding Guide
+    Made by webTune1 • Click any card to learn more • Edit this file to update your quick reference!
   </footer>
 </body>
 </html>
